@@ -8,7 +8,7 @@ from keras.optimizers.schedules import ExponentialDecay
 from keras.preprocessing.image import ImageDataGenerator
 from keras.callbacks import EarlyStopping
 
-# Function to install scipy if not already installed
+
 def install_scipy_if_needed():
     try:
         import scipy
@@ -16,10 +16,10 @@ def install_scipy_if_needed():
         import subprocess
         subprocess.check_call(['pip', 'install', 'scipy'])
 
-# Install scipy if needed
+
 install_scipy_if_needed()
 
-# Initialize image data generator with rescaling and data augmentation
+
 train_data_gen = ImageDataGenerator(
     rescale=1./255,
     rotation_range=15,
@@ -32,7 +32,7 @@ train_data_gen = ImageDataGenerator(
 
 validation_data_gen = ImageDataGenerator(rescale=1./255)
 
-# Preprocess all train images with data augmentation
+
 train_generator = train_data_gen.flow_from_directory(
     'data/train',
     target_size=(48, 48),
@@ -41,7 +41,7 @@ train_generator = train_data_gen.flow_from_directory(
     class_mode='categorical'
 )
 
-# Preprocess all validation images without data augmentation
+
 validation_generator = validation_data_gen.flow_from_directory(
     'data/test',
     target_size=(48, 48),
